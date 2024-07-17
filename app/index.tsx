@@ -19,10 +19,10 @@ export default function Index() {
         <Text style={styles.subText}>Fetch water, fetch electronic</Text>
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.button} onPress={() => router.push("/login")}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/(auth)/login")}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => router.push("/register")}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push("/(auth)/register")}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>

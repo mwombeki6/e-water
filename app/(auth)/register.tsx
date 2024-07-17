@@ -1,9 +1,12 @@
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const register = () => {
+export default function register() {
   return (
-    <div>register</div>
+    <View>
+      <Text>register</Text>
+    </View>
   )
 }
 
-export default register
+const styles = StyleSheet.create({})
