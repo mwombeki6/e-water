@@ -18,7 +18,7 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>login</Text>
-      <Formik initialValues={{email: "", password: ""}} onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => console.log(values)} validationSchema={validationShema}>
+      <Formik initialValues={{email: "erick@gmail.com", password: "eri@6#77"}} onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => console.log(values)} validationSchema={validationShema}>
       {({
           handleChange,
           handleBlur,
