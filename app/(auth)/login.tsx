@@ -10,11 +10,11 @@ const validationShema = Yup.object().shape({
 })
 
 type FormValues = {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 
-export default function login() {
+export default function Login() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>login</Text>
@@ -50,7 +50,7 @@ export default function login() {
             {errors.password && touched.password ? (
               <Text style={styles.errorText}>{errors.password}</Text>
             ) : null}
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit as any} >
               <Text style={styles.buttonText}>Login</Text >
             </TouchableOpacity>
           </View>
