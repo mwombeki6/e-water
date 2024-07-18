@@ -8,8 +8,8 @@ import { useMutation } from '@tanstack/react-query'
 
 //Schema
 const LoginSchema = Yup.object().shape({
-    email: Yup.string().required("Email is required").email().label("Email"),
-    password: Yup.string().required("Password is required").min(5).label("Password")
+  email: Yup.string().required("Email is required").email().label("Email"),
+  password: Yup.string().required("Password is required").min(5).label("Password")
 })
 
 type FormValues = {
@@ -28,23 +28,23 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>login</Text>
-      <Formik 
-          initialValues={{email: "erick@gmail.com", password: "eri@6#77"}} 
-          onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => {
-            console.log(values)
-            mutation
-              .mutateAsync(values)
-              .then((data) => {
-                console.log("data", data)
-                //dispatchEvent(loginAction(data))
-              })
-              .catch((err) => {
-                console.log(err)
-              })
-            router.push("/(tabs)")  
-          }} 
-          validationSchema={LoginSchema}>
-      {({
+      <Formik
+        initialValues={{ email: "erick@gmail.com", password: "eri@6#77" }}
+        onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => {
+          console.log(values)
+          mutation
+            .mutateAsync(values)
+            .then((data) => {
+              console.log("data", data)
+              //dispatchEvent(loginAction(data))
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+          router.push("/(tabs)")
+        }}
+        validationSchema={LoginSchema}>
+        {({
           handleChange,
           handleBlur,
           handleSubmit,
