@@ -1,10 +1,13 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, FormikHelpers, FormikValues } from 'formik'
 import * as Yup from 'yup'
+import { useRouter } from 'expo-router'
+import { loginUser } from '../(services)/api/api'
+import { useMutation } from '@tanstack/react-query'
 
 //Schema
-const validationShema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
     email: Yup.string().required("Email is required").email().label("Email"),
     password: Yup.string().required("Password is required").min(5).label("Password")
 })
@@ -15,13 +18,32 @@ type FormValues = {
 }
 
 export default function Login() {
+  const router = useRouter();
+  //const dispatch = useDispatch();
+  const mutation = useMutation({
+    mutationFn: loginUser,
+    mutationKey: ["login"],
+  });
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>login</Text>
       <Formik 
           initialValues={{email: "erick@gmail.com", password: "eri@6#77"}} 
-          onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => console.log(values)} 
-          validationSchema={validationShema}>
+          onSubmit={(values: FormValues, actions: FormikHelpers<FormValues>) => {
+            console.log(values)
+            mutation
+              .mutateAsync(values)
+              .then((data) => {
+                console.log("data", data)
+                //dispatchEvent(loginAction(data))
+              })
+              .catch((err) => {
+                console.log(err)
+              })
+            router.push("/(tabs)")  
+          }} 
+          validationSchema={LoginSchema}>
       {({
           handleChange,
           handleBlur,
