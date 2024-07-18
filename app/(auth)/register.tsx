@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { useRouter } from 'expo-router';
-import { useMutation} from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { registerUser } from '../(services)/api/api';
 
 type FormValues = {
